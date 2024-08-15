@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('{% static 'img/bg/home-bg2.jpg' %}');">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" method="post">
+                    {% csrf_token %}
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        ورود
+                        <hr>
+                    </span>
+                    <span class="p-b-34 p-t-27" style="color: whitesmoke;">
+                        سلام!<br>لطفا شماره موبایل و رمز عبور خود را وارد کنید
+                    </span>
+
+                    <div data-validate="Enter phone">
+                        <input style="margin-top: 20px;" class="form-control" type="text" name="phone"
+                               placeholder="شماره موبایل">
+                        <span data-placeholder="&#xf207;"></span>
+                    </div>
+                    {% if form.phone.errors %}
+                        <div class="alert alert-danger" style="font-size: x-small;border-radius: 50px; margin-top: 5px">
+                            {{ form.phone.errors }}
+                        </div>
+                    {% endif %}
+                    <div data-validate="Enter password">
+                        <input style="margin-top: 20px;" class="form-control" type="password" name="password"
+                               placeholder="رمز عبور">
+                        <span data-placeholder="&#xf207;"></span>
+                    </div>
+                    {% if form.password.errors %}
+                        <div class="alert alert-danger" style="font-size: x-small;border-radius: 50px; margin-top: 5px">
+                            {{ form.password.errors }}
+                        </div>
+                    {% endif %}
+                    {% if not form.password.errors or not form.phone.errors %}
+                        {% if form.errors %}
+                            <div class="alert alert-danger"
+                                 style="font-size: x-small;border-radius: 50px; margin-top: 5px">
+                                {{ form.non_field_errors }}
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                    <div class="container-login100-form-btn">
+                        <button style="margin-top: 30px;" class="login100-form-btn">
+                            ورود
+                        </button>
+                    </div>
+                    <hr style="color: whitesmoke;">
+                    <div class="container-login100-form-btn">
+                        <button style="margin-top: 30px;" class="login100-form-btn">
+                            <span>ورود با Google</span><span style="position: absolute; margin-right: 310px;"><i
+                                class="fa-brands fa-google"></i></span>
+                        </button>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button style="margin-top: 30px;" class="login100-form-btn">
+                            <span>ورود با Linkedin</span><span style="position: absolute; margin-right: 310px;"><i
+                                class="fa-brands fa-linkedin-in"></i></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="dropDownSelect1"></div>
+{% endblock %}

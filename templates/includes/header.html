@@ -1,0 +1,108 @@
+{% load static %}
+
+<body data-spy="scroll" data-offset="80">
+<div class="preloaders"><span class="loader"></span></div>
+<div id="navigation" class="navbar-light bg-faded site-navigation">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-20 align-self-center">
+                <div class="site-logo"><a href="index.html"><img src="{% static 'img/logo.png' %}" alt=""></a></div>
+            </div>
+            <div class="col-60 d-flex">
+                <nav id="main-menu">
+                    <ul>
+                        <li>
+                            <a href="index.html">صفحه اصلی</a>
+                        </li>
+                        <li><a href="about.html">در باره ما</a></li>
+                        <li class="menu-item-has-children">
+                            <a href="course.html">دوره ها</a>
+                            <ul>
+                                <li><a href="course.html">برنامه نویسی</a></li>
+                                <li><a href="course_details.html">UI / UX</a></li>
+                                <li><a href="course_details.html">وردپرس</a></li>
+                                <li><a href="course_details.html">سئو</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">مدرسین</a>
+                        </li>
+                        <li>
+                            <a href="blog.html">وبلاگ</a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+
+            <div class="col-20 d-none d-xl-block text-end align-self-center">
+                <a href="contact.html" class="simple-icon" style="margin-left: 50px;"><i
+                        class="fa-regular fa-cart-shopping"></i></a>
+                {% if not request.user.is_authenticated %}
+                    <a href="{% url 'account:login' %}" class="header-btn">ورود</a>
+                    <a href="{% url 'account:submit' %}" class="btn_one">ثبت نام</a>
+                {% else %}
+
+                    <div id="main-menu" style="display: inline-block; margin-right: -40px">
+                        <ul>
+                            <li class="menu-item-has-children">
+                                {% if request.user.first_name and request.user.last_name %}
+                                    <a style="text-transform: none">{{ request.user.get_full_name }}</a>
+                                {% else %}
+                                    <a>{{ request.user.phone }}</a>
+                                {% endif %}    
+                                <ul>
+                                    <li><a href="course.html">حساب کاربری</a></li>
+                                    <li><a href="{% url 'account:logout' %}">خروج</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    {% if request.user.image %}
+                        <img src="{{ request.user.image.url }}"
+                             style="width: 30px; height: 30px; border-radius: 50px; margin-bottom: 5px">
+                    {% else %}
+                        <img src="{% static 'img/profile.png' %}"
+                             style="width: 30px; height: 30px; border-radius: 50px; margin-bottom: 5px">
+                    {% endif %}
+                {% endif %}
+            </div>
+
+            <ul class="mobile_menu">
+                <li>
+                    <a href="#">صفحه اصلی</a>
+                    <ul class="sub-menu">
+                        <li><a href="index.html">صفحه اصلی 01</a></li>
+                        <li><a href="index2.html">صفحه اصلی 02</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">در باره</a></li>
+                <li>
+                    <a href="#">دوره</a>
+                    <ul class="sub-menu">
+                        <li><a href="course.html">دوره</a></li>
+                        <li><a href="course_details.html">جزئیات دوره</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">صفحات</a>
+                    <ul class="sub-menu">
+                        <li><a href="instructor.html">مربی</a></li>
+                        <li><a href="ins_details.html">مشخصات مربی</a></li>
+                        <li><a href="pricing.html">طرح قیمت گذاری</a></li>
+                        <li><a href="faq.html">صفحه فک</a></li>
+                        <li><a href="404.html">404</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="blog.html">وبلاگ</a>
+                    <ul class="sub-menu">
+                        <li><a href="blog.html">وبلاگ</a></li>
+                        <li><a href="blog_single.html">جزئیات وبلاگ</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">مخاطب</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

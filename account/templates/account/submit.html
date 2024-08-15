@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('{% static 'img/bg/home-bg2.jpg' %}');">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" method="post" novalidate>
+                    {% csrf_token %}
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        ثبت نام
+                        <hr>
+                    </span>
+                    <div data-validate="Enter phone">
+                        {{ form.phone|add_class:'form-control'|attr:"placeholder:شماره موبایل" }}
+                        <span data-placeholder="&#xf207;"></span>
+                    </div>
+                    {% if form.phone.errors %}
+                    <div class="alert alert-danger" style="font-size: x-small;border-radius: 50px; margin-top: 5px">
+                        {{ form.phone.errors }}
+                    </div>
+                    {% endif %}
+                    <div data-validate="Enter password">
+                        {{ form.password|add_class:'form-control'|attr:"placeholder:رمز عبور"|append_attr:"style:margin-top:18px" }}
+                        <span data-placeholder="&#xf207;"></span>
+                    </div>
+                    {% if form.password.errors %}
+                    <div class="alert alert-danger" style="font-size: x-small;border-radius: 50px; margin-top: 5px">
+                        {{ form.password.errors }}
+                    </div>
+                    {% else %}
+                    <span class="p-b-34 p-t-27" style="color: lightgray; font-size: x-small; margin-right: 12px">
+                        رمزعبور باید حداقل 8 کاراکتر شامل کاراکتر خاص، عدد، حرف بزرگ و حرف کوچک باشد.
+                    </span>
+                    {% endif %}
+                    <div data-validate="Enter password">
+                        {{ form.password_confirm|add_class:'form-control'|attr:"placeholder:تایید رمز عبور"}}
+                        <span data-placeholder="&#xf207;"></span>
+                    </div>
+                    {% if form.password_confirm.errors %}
+                    <div class="alert alert-danger" style="font-size: x-small;border-radius: 50px; margin-top: 5px">
+                        {{ form.password_confirm.errors }}
+                    </div>
+                    {% endif %}
+                    <div class="container-login100-form-btn">
+                        <button style="margin-top: 30px;" class="login100-form-btn">
+                            ثبت نام
+                        </button>
+                    </div>
+                    <hr style="color: whitesmoke;">
+                    <div class="container-login100-form-btn">
+                        <button style="margin-top: 30px;" class="login100-form-btn">
+                            <span>ثبت نام با Google</span><span style="position: absolute; margin-right: 310px;"><i
+                                    class="fa-brands fa-google"></i></span>
+                        </button>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button style="margin-top: 30px;" class="login100-form-btn">
+                            <span>ثبت نام با Linkedin</span><span style="position: absolute; margin-right: 310px;"><i
+                                    class="fa-brands fa-linkedin-in"></i></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="dropDownSelect1"></div>
+    {% endblock %}
