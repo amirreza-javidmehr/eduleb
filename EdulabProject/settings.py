@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'widget_tweaks',
     'django_render_partial',
+    'nested_inline',
     
     #MY APPS
 
     'home.apps.HomeConfig',
     'account.apps.AccountConfig',
+    'course.apps.CourseConfig',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +141,4 @@ AUTH_USER_MODEL = "account.User"
 
 LOGIN_URL = 'account:login'
 LOGIN_REDIRECT_URL = 'next'
+

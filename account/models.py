@@ -77,3 +77,14 @@ class User(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
+
+class Teacher(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="%(class)s")
+    description = models.TextField(blank=True)
+    website = models.URLField(blank=True)
+    instagram = models.URLField(blank=True)
+    twitter = models.URLField(blank=True)
+    facebook = models.URLField(blank=True)
+
+    def __str__(self):
+        return self.user.phone
