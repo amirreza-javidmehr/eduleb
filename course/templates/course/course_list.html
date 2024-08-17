@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="section-top">
+    <div class="container">
+        <div class="col-lg-10 offset-lg-1 text-center">
+            <div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s"
+                 data-wow-offset="0">
+                <h1>همه دوره</h1>
+                <ul>
+                    <li><a href="{% url 'home:main' %}">صفحه اصلی</a></li>
+                    <li>/ دروس</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="home_course section-padding">
+    <div class="container">
+        <div class="row">
+            {% for course in courses %}
+            <div class="col-lg-4 col-sm-6 col-xs-12">
+                <div class="single_course">
+                    <div class="single_c_img">
+                        <img src="{{ course.image.url }}" class="img-fluid" alt="course-image"><span>{{ course.category.first }}</span>
+                    </div>
+                    <h4><a href="course_list.html">{{ course.title }}</a></h4>
+                    <p><span class="ti-book"></span> جلسه</p>
+                    <p><span class="ti-alarm-clock"></span>{{ course.time }} ساعت</p>
+                    <div class="price">هزینه دوره - {{ course.price }} تومان</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
