@@ -36,7 +36,7 @@
             </div>
 
             <div class="col-20 d-none d-xl-block text-end align-self-center">
-                <a href="contact.html" class="simple-icon" style="margin-left: 50px;"><i
+                <a href="contact.html" class="simple-icon" style="margin-left: 40px;"><i
                         class="fa-regular fa-cart-shopping"></i></a>
                 {% if not request.user.is_authenticated %}
                     <a href="{% url 'account:login' %}" class="header-btn">ورود</a>
@@ -60,7 +60,7 @@
                     </div>
                     {% if request.user.image %}
                         <img src="{{ request.user.image.url }}"
-                             style="width: 30px; height: 30px; border-radius: 50px; margin-bottom: 5px">
+                             style="width: 30px; height: 30px; border-radius: 50px; margin-bottom: 5px; margin-left: -15px">
                     {% else %}
                         <img src="{% static 'img/profile.png' %}"
                              style="width: 30px; height: 30px; border-radius: 50px; margin-bottom: 5px">
