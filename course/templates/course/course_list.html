@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load filters %}
 {% block content %}
 <section class="section-top">
     <div class="container">
@@ -25,8 +26,8 @@
                         <img src="{{ course.image.url }}" class="img-fluid" alt="course-image"><span>{{ course.category.first }}</span>
                     </div>
                     <h4><a href="course_list.html">{{ course.title }}</a></h4>
-                    <p><span class="ti-book"></span> جلسه</p>
-                    <p><span class="ti-alarm-clock"></span>{{ course.time }} ساعت</p>
+                    <p><span class="ti-book"></span>{{ course.session.all.count }}جلسه</p>
+                    <p><span class="ti-alarm-clock"></span>{% if course.time != None %}{% course_time course.time %}{% else %}0 ساعت{% endif %}</p>
                     <div class="price">هزینه دوره - {{ course.price }} تومان</div>
                 </div>
             </div>

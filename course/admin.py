@@ -20,6 +20,7 @@ class CoursesAdmin(NestedModelAdmin):
     list_display = ('title', 'teacher', 'time', 'price')
     list_filter = ('created_at',)
     search_fields = ('title',)
+    readonly_fields = ('slug',)
     inlines = (SeasonAdmin,)
 
 
