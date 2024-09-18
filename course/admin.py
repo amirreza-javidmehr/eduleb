@@ -1,5 +1,5 @@
 from django.contrib import admin
-from course.models import Season, Session, Course, Category
+from course.models import Season, Session, Course, Category, Comment
 from nested_inline.admin import NestedStackedInline, NestedModelAdmin
 
 admin.site.register(Category)
@@ -22,5 +22,7 @@ class CoursesAdmin(NestedModelAdmin):
     search_fields = ('title',)
     readonly_fields = ('slug',)
     inlines = (SeasonAdmin,)
+
+admin.site.register(Comment)
 
 

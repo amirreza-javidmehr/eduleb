@@ -892,3 +892,28 @@
 
 
 })(jQuery);
+
+function oneStar(){
+    document.getElementById('rate').value = 1
+}
+
+function twoStar(){
+    document.getElementById('rate').value = 2
+}
+
+function threeStar(){
+    document.getElementById('rate').value = 3
+}
+
+function fourStar(){
+    document.getElementById('rate').value = 4
+}
+
+function fiveStar(){
+    document.getElementById('rate').value = 5
+}
+
+function parent_id(id){
+    document.getElementById('parent_id').value= id;
+    window.location.href = '#write_comment'
+}

@@ -42,6 +42,7 @@ html,
 body {
     height: 100%;
     position: relative;
+    scroll-behavior: smooth;
 }
 
 h1,
@@ -1523,6 +1524,7 @@ ul {
     border-radius: 3px;
     padding-right: 10px;
 }
+
 
 .review-form .client-form .rating {
     display: flex;
@@ -19216,4 +19218,8 @@ body, h1, h2, h3, h4, h5, a, p {
     src: url('fonts/iranyekanwebboldfanum.eot'); /* IE9 Compat Modes */
     src: url('fonts/iranyekanwebboldfanum.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('fonts/iranyekanwebboldfanum.woff') format('woff'), /* Pretty Modern Browsers */ url('fonts/iranyekanwebboldfanum.ttf') format('truetype'), /* Safari, Android, iOS */ url('fonts/iranyekanwebboldfanum.svg#iranyekan') format('svg'); /* Legacy iOS */
     font-weight: bold;
+}
+
+#pagination-block {
+    scroll-behavior: smooth;
 }

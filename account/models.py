@@ -86,5 +86,8 @@ class Teacher(models.Model):
     twitter = models.URLField(blank=True)
     facebook = models.URLField(blank=True)
 
+    def get_full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
     def __str__(self):
         return self.user.phone
