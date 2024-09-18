@@ -2,37 +2,65 @@
 {% load static %}
 {% load filters %}
 {% block content %}
-<section class="section-top">
-    <div class="container">
-        <div class="col-lg-10 offset-lg-1 text-center">
-            <div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s"
-                 data-wow-offset="0">
-                <h1>همه دوره</h1>
-                <ul>
-                    <li><a href="{% url 'home:main' %}">صفحه اصلی</a></li>
-                    <li>/ دروس</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="home_course section-padding">
-    <div class="container">
-        <div class="row">
-            {% for course in courses %}
-            <div class="col-lg-4 col-sm-6 col-xs-12">
-                <div class="single_course">
-                    <div class="single_c_img">
-                        <img src="{{ course.image.url }}" class="img-fluid" alt="course-image"><span>{{ course.category.first }}</span>
-                    </div>
-                    <h4><a href="course_list.html">{{ course.title }}</a></h4>
-                    <p><span class="ti-book"></span>{{ course.session.all.count }}جلسه</p>
-                    <p><span class="ti-alarm-clock"></span>{% if course.time != None %}{% course_time course.time %}{% else %}0 ساعت{% endif %}</p>
-                    <div class="price">هزینه دوره - {{ course.price }} تومان</div>
+    <section class="section-top">
+        <div class="container">
+            <div class="col-lg-10 offset-lg-1 text-center">
+                <div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s"
+                     data-wow-offset="0">
+                    <h1>همه دوره</h1>
+                    <ul>
+                        <li><a href="{% url 'home:main' %}">صفحه اصلی</a></li>
+                        <li>/ دروس</li>
+                    </ul>
                 </div>
             </div>
-            {% endfor %}
         </div>
-    </div>
-</section>
+    </section>
+    <section class="home_course section-padding">
+        <div class="container">
+            <div class="row">
+                {% for course in courses %}
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="single_course">
+                            <div class="single_c_img">
+                                <img src="{{ course.image.url }}" class="img-fluid"
+                                     alt="course-image"><span>{{ course.category.first }}</span>
+                            </div>
+                            <h4><a href="{{ course.get_absolute_url }}">{{ course.title }}</a></h4>
+                            <p><span class="ti-book"></span>{{ course.session.all.count }}جلسه</p>
+                            <p><span class="ti-alarm-clock"></span>{% if course.time != None %}
+                                {% course_time course.time %}{% else %}0 ساعت{% endif %}</p>
+                            <div class="price">هزینه دوره - {{ course.price|price_filter }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% if page_obj.has_other_pages %}
+        <div aria-label="Page navigation example"
+             style="direction: ltr; display: flex; flex-direction: row; align-items: center; justify-content: center;">
+            <ul class="pagination pagination-lg">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                {% endif %}
+                {% for i in page_obj.paginator.page_range %}
+                <li class="page-item {% if page_obj.number == i %} active {% endif %}"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                {% endfor %}
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        {% endif %}
+    </section>
 {% endblock %}
