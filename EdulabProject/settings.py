@@ -79,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-# WSGI_APPLICATION = 'EdulabProject.wsgi.application'
+WSGI_APPLICATION = 'EdulabProject.wsgi.application'
 
 
 # Database
